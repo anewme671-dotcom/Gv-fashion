@@ -1,0 +1,593 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    color:#222;
+    background:#fff;
+    line-height:1.6;
+}
+
+/* NAVBAR */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:white;
+    border-bottom:1px solid #eee;
+}
+
+.logo{
+    color:#6E257E;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#222;
+    font-weight:bold;
+}
+
+.nav-links a:hover{
+    color:#6E257E;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+}
+
+.hero-slider{
+    position:relative;
+    width:100%;
+    height:700px;
+    overflow:hidden;
+}
+
+
+.hero-image{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    opacity:0;
+    transition:opacity 1.5s ease;
+}
+
+
+.hero-image.active{
+    opacity:1;
+}
+
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:8%;
+    transform:translateY(-50%);
+    background:rgba(255,255,255,0.85);
+    padding:30px;
+    border-radius:20px;
+    max-width:500px;
+}
+
+.hero-content h1{
+    font-size:60px;
+    color:#6E257E;
+    margin-bottom:15px;
+}
+
+.hero-content p{
+    margin-bottom:20px;
+}
+
+/* BUTTON */
+
+.btn{
+    display:inline-block;
+    background:#6E257E;
+    color:white;
+    text-decoration:none;
+    padding:14px 30px;
+    border-radius:30px;
+}
+
+.btn:hover{
+    background:#8A3B9B;
+}
+
+/* FEATURED */
+
+.featured{
+    padding:80px 8%;
+}
+
+.featured h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.collection-container{
+    display:flex;
+    gap:30px;
+}
+
+.collection-card{
+    flex:1;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.collection-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.collection-card h3{
+    padding:20px 20px 10px;
+}
+
+.collection-card p{
+    padding:0 20px 20px;
+}
+
+.collection-card .btn{
+    margin:20px;
+}
+
+.coming-soon-image{
+    width:100%;
+    height:350px;
+    background:#F7F0F9;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#6E257E;
+    font-size:40px;
+    font-weight:bold;
+}
+
+/* WHY US */
+
+.why-us{
+    padding:80px 8%;
+    background:#F7F0F9;
+}
+
+.why-us h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.reasons{
+    display:flex;
+    gap:20px;
+}
+
+.reason{
+    flex:1;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+}
+
+/* CTA */
+
+.cta{
+    text-align:center;
+    padding:80px 8%;
+}
+
+.cta h2{
+    margin-bottom:20px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#6E257E;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+
+
+
+
+
+
+/* ============================= */
+/* CATALOG PAGE */
+/* ============================= */
+
+.catalog-hero {
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: #f5f1ec;
+}
+
+.catalog-hero-content {
+    max-width: 700px;
+}
+
+.catalog-hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.catalog-hero p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* CATALOG SECTIONS */
+
+.catalog-section {
+    padding: 70px 8%;
+}
+
+.catalog-section > h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 50px;
+    line-height: 1.7;
+}
+
+
+/* CATEGORY */
+
+.category {
+    margin-bottom: 70px;
+}
+
+.category h3 {
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+
+/* IMAGE GRID */
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* PRODUCT CARD */
+
+.catalog-item {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.catalog-item:hover {
+    transform: translateY(-7px);
+}
+
+.catalog-item img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+.catalog-item h4 {
+    padding: 18px;
+    margin: 0;
+    font-size: 18px;
+}
+
+
+/* WOMEN'S SECTION */
+
+.women-catalog {
+    background: #faf7f4;
+}
+
+
+/* ============================= */
+/* CATALOG BRAND COLORS */
+/* ============================= */
+
+.catalog-hero h1 {
+    color: #6E257E;
+}
+
+.catalog-section h2,
+.catalog-section h3,
+.catalog-item h4 {
+    color: #6E257E;
+}
+
+.catalog-hero p,
+.section-description {
+    color: #222;
+}
+
+.catalog-item {
+    color: #222;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .catalog-hero h1 {
+        font-size: 36px;
+    }
+
+    .catalog-section {
+        padding: 50px 5%;
+    }
+
+    .catalog-section > h2 {
+        font-size: 30px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .catalog-item img {
+        height: 280px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-item img {
+        height: 400px;
+    }
+
+}
+
+
+
+
+
+/* ============================= */
+/* ABOUT PAGE */
+/* ============================= */
+
+.about-hero {
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: #F7F0F9;
+}
+
+.about-hero-content {
+    max-width: 750px;
+}
+
+.about-hero h1 {
+    color: #6E257E;
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.about-hero p {
+    font-size: 18px;
+}
+
+
+/* OUR STORY */
+
+.about-story {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 80px 8%;
+}
+
+.about-story-text {
+    flex: 1;
+}
+
+.about-story-text h2 {
+    color: #6E257E;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-story-text p {
+    margin-bottom: 18px;
+}
+
+.about-story-image {
+    flex: 1;
+}
+
+.about-story-image img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+
+/* WHAT WE DO */
+
+.what-we-do {
+    padding: 80px 8%;
+    background: #F7F0F9;
+}
+
+.what-we-do > h2 {
+    text-align: center;
+    color: #6E257E;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.about-cards {
+    display: flex;
+    gap: 25px;
+}
+
+.about-card {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.about-card h3 {
+    color: #6E257E;
+    margin-bottom: 15px;
+}
+
+
+/* OUR VALUES */
+
+.our-values {
+    padding: 80px 8%;
+}
+
+.our-values > h2 {
+    text-align: center;
+    color: #6E257E;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.values-container {
+    display: flex;
+    gap: 25px;
+}
+
+.value {
+    flex: 1;
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+}
+
+.value h3 {
+    color: #6E257E;
+    margin-bottom: 15px;
+}
+
+
+
+/* ============================= */
+/* CONTACT SECTION */
+/* ============================= */
+
+.contact-info {
+    padding: 80px 8%;
+    background: #F7F0F9;
+}
+
+.contact-info h2 {
+    text-align: center;
+    color: #6E257E;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.contact-container {
+    display: flex;
+    gap: 25px;
+}
+
+.contact-card {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.contact-card h3 {
+    color: #6E257E;
+    margin-bottom: 15px;
+}
+
+.contact-card a {
+    display: inline-block;
+    background: #6E257E;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    transition: 0.3s ease;
+}
+
+.contact-card a:hover {
+    background: #8A3B9B;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .about-hero h1 {
+        font-size: 36px;
+    }
+
+    .about-story {
+        flex-direction: column;
+        padding: 60px 5%;
+    }
+
+    .about-story-image img {
+        height: 350px;
+    }
+
+    .about-cards {
+        flex-direction: column;
+    }
+
+    .values-container {
+        flex-direction: column;
+    }
+
+}
