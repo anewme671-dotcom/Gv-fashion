@@ -370,6 +370,20 @@ footer{
 }
 
 
+@media (max-width: 500px) {
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-item img {
+        height: 400px;
+    }
+
+}
+
+
+
 
 
 /* ============================= */
@@ -574,6 +588,112 @@ footer{
 
     .values-container {
         flex-direction: column;
+    }
+
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE FIXES
+========================= */
+
+@media (max-width: 768px){
+
+    /* NAVBAR */
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    /* HERO */
+
+    .hero{
+        position:relative;
+    }
+
+    .hero-slider{
+        height:350px;
+    }
+
+    .hero-content{
+        max-width:90%;
+        left:5%;
+        padding:20px;
+    }
+
+    .hero-content h1{
+        font-size:36px;
+    }
+
+    .hero-content p{
+        font-size:15px;
+    }
+
+    /* FEATURED COLLECTIONS */
+
+    .collection-container{
+        flex-direction:column;
+    }
+
+    .collection-card{
+        width:100%;
+    }
+
+    .collection-card img{
+        height:300px;
+    }
+
+    /* WHY US */
+
+    .reasons{
+        flex-direction:column;
+    }
+
+    /* GENERAL SPACING */
+
+    .featured,
+    .why-us,
+    .cta{
+        padding:50px 5%;
+    }
+
+}
+
+
+/* SMALL PHONES */
+
+@media (max-width: 500px){
+
+    .hero-slider{
+        height:280px;
+    }
+
+    .hero-content{
+        padding:15px;
+    }
+
+    .hero-content h1{
+        font-size:28px;
+    }
+
+    .hero-content p{
+        font-size:14px;
+    }
+
+    .btn{
+        padding:12px 20px;
+    }
+
+    .collection-card img{
+        height:250px;
     }
 
 }
