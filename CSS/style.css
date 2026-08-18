@@ -370,20 +370,6 @@ footer{
 }
 
 
-@media (max-width: 500px) {
-
-    .catalog-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .catalog-item img {
-        height: 400px;
-    }
-
-}
-
-
-
 
 
 /* ============================= */
