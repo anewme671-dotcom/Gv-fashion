@@ -697,3 +697,91 @@ footer{
     }
 
 }
+
+
+/* =========================
+   ABOUT PAGE MOBILE FIXES
+========================= */
+
+@media (max-width: 768px){
+
+    .about-hero h1{
+        font-size:36px;
+    }
+
+    .about-hero p{
+        font-size:16px;
+    }
+
+    /* OUR STORY */
+
+    .about-story{
+        flex-direction:column;
+        padding:50px 5%;
+        gap:30px;
+    }
+
+    .about-story-image img{
+        height:350px;
+    }
+
+    .about-story-text h2{
+        font-size:30px;
+    }
+
+    /* WHAT WE DO */
+
+    .about-cards{
+        flex-direction:column;
+    }
+
+    .what-we-do{
+        padding:50px 5%;
+    }
+
+    .what-we-do > h2{
+        font-size:30px;
+    }
+
+    /* OUR VALUES */
+
+    .values-container{
+        flex-direction:column;
+    }
+
+    .our-values{
+        padding:50px 5%;
+    }
+
+    .our-values > h2{
+        font-size:30px;
+    }
+
+    /* CONTACT */
+
+    .contact-container{
+        flex-direction:column;
+    }
+
+    .contact-info{
+        padding:50px 5%;
+    }
+
+    .contact-info h2{
+        font-size:30px;
+    }
+
+}
+
+
+@media (max-width: 500px){
+
+    .about-hero h1{
+        font-size:28px;
+    }
+
+    .about-story-image img{
+        height:250px;
+    }
+
+}
