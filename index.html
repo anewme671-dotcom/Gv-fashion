@@ -1,146 +1,230 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Great Vision Fashion creates elegant African fashion with creativity, culture and confidence.">
     <title>Great Vision Fashion | African Fashion</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="IMAGES/favicon.svg">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Primary navigation">
+            <a class="logo" href="index.html">Great Vision Fashion</a>
 
-<header>
-    <nav class="navbar">
-        <h2 class="logo">Great Vision Fashion</h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="catlog.html">Catalog</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </nav>
-</header>
+    <main>
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="hero-slider" aria-label="Collection highlights">
+                <img src="IMAGES/hero/hero1.jpg" class="hero-image active" alt="Elegant African fashion look">
+                <img src="IMAGES/women/straight-gown-2.jpg" class="hero-image" alt="Printed straight gown">
+                <img src="IMAGES/hero/hero3.jpg" class="hero-image" alt="Great Vision Fashion design">
+                <img src="IMAGES/women/bubu-gown-1.jpg" class="hero-image" alt="Modern ready-to-wear look">
+                <img src="IMAGES/hero/hero5.jpg" class="hero-image" alt="African fashion portrait">
+            </div>
 
-<section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">Made for your next occasion</p>
+                <h1>Elegant African Fashion</h1>
+                <p>Beautiful designs crafted with creativity, culture and confidence.</p>
 
-    <div class="hero-slider">
+                <div class="hero-actions">
+                    <a href="catalog.html" class="btn">Explore Collection</a>
+                    <a href="#story" class="text-link">Discover our story</a>
+                </div>
+            </div>
 
-    <img src="images/hero/hero1.jpg" class="hero-image active">
+            <div class="slider-controls">
+                <button type="button" class="slider-button" data-slider="previous" aria-label="Previous slide">&#8592;</button>
+                <span class="slider-status" aria-live="polite">01 / 05</span>
+                <button type="button" class="slider-button" data-slider="next" aria-label="Next slide">&#8594;</button>
+            </div>
+        </section>
 
-    <img src="images/women/women7b.jpg" class="hero-image">
-
-    <img src="images/hero/hero3.jpg" class="hero-image">
-
-    <img src="images/women/women5b.jpg" class="hero-image">
-
-    <img src="images/hero/hero5.jpg" class="hero-image">
-
-</div>
-
-    <div class="hero-content">
-        <h1>Elegant African Fashion</h1>
-
-        <p>
-            Beautiful designs crafted with creativity,
-            culture and confidence.
-        </p>
-
-        <a href="catlog.html" class="btn">
-            Explore Collection
-        </a>
-    </div>
-
-</section>
-
-<section class="featured">
-
-    <h2>Featured Collections</h2>
-
-    <div class="collection-container">
-
-        <div class="collection-card">
-
-            <img src="images/women/women1.jpg" alt="Women's Fashion">
-
-            <h3>Women's Collection</h3>
-
-            <p>
-                Gowns, Ready-to-Wear,
-                Native Styles and more.
+        <!-- Introduction -->
+        <section class="intro section-shell">
+            <p class="eyebrow">The Great Vision perspective</p>
+            <h2>Fashion that carries your presence.</h2>
+            <p class="intro-copy">
+                Great Vision Fashion brings together expressive African prints,
+                thoughtful tailoring and a modern eye. Browse for inspiration,
+                then speak with us about a look that feels distinctly yours.
             </p>
+        </section>
 
-            <a href="catlog.html" class="btn">
-                 View Collection
-</a>
-            
+        <!-- Featured collections -->
+        <section class="featured section-shell">
+            <div class="section-heading">
+                <p class="eyebrow">Explore the edit</p>
+                <h2>Featured collections</h2>
+            </div>
 
+            <div class="collection-container">
+                <article class="collection-card collection-card-image">
+                    <img src="IMAGES/women/classic-gown-2.jpg" alt="Bright pink classic gown from the women's collection" loading="lazy">
+                    <div class="card-copy">
+                        <p class="eyebrow">For her</p>
+                        <h3>Women's Collection</h3>
+                        <p>Gowns, ready-to-wear, native styles and statement pieces for memorable days.</p>
+                        <a href="catalog.html" class="text-link">View women's edit &#8594;</a>
+                    </div>
+                </article>
+
+                <article class="collection-card coming-soon-card">
+                    <div class="coming-soon-mark">Coming<br>soon</div>
+                    <div class="card-copy">
+                        <p class="eyebrow">For him</p>
+                        <h3>Men's Collection</h3>
+                        <p>Our men's edit is in development. Ask us about a custom senator style or native look.</p>
+                        <a href="https://wa.me/2347043464510?text=Hello%20Great%20Vision%20Fashion%2C%20I%20would%20like%20to%20ask%20about%20the%20Men%27s%20Collection." target="_blank" rel="noopener noreferrer" class="text-link">Make an inquiry &#8594;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Why choose us -->
+        <section class="why-us band">
+            <div class="section-shell">
+                <div class="section-heading">
+                    <p class="eyebrow">The difference is in the detail</p>
+                    <h2>Why choose us?</h2>
+                </div>
+
+                <div class="feature-list">
+                    <article>
+                        <span>01</span>
+                        <h3>Custom designs</h3>
+                        <p>Outfits shaped around your personal style, occasion and preferences.</p>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <h3>Quality craftsmanship</h3>
+                        <p>Careful attention to fabric, finish and the details that make a piece special.</p>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <h3>Modern African fashion</h3>
+                        <p>Culture and contemporary elegance, considered together.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand story -->
+        <section class="story section-shell" id="story">
+            <div class="story-copy">
+                <p class="eyebrow">Our story</p>
+                <h2>Rooted in culture. Designed for now.</h2>
+                <p>Great Vision Fashion creates beautiful and carefully crafted outfits for men and women.</p>
+                <p>Our designs combine African culture with modern fashion, helping customers look elegant, confident and unique.</p>
+                <p>From traditional native styles to modern ready-to-wear designs, every outfit is made with attention to detail.</p>
+            </div>
+
+            <div class="story-image">
+                <img src="IMAGES/hero/herox.png" alt="Model wearing a Great Vision Fashion look" loading="lazy">
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services band">
+            <div class="section-shell">
+                <div class="section-heading">
+                    <p class="eyebrow">What we do</p>
+                    <h2>A considered wardrobe, made with you.</h2>
+                </div>
+
+                <div class="service-grid">
+                    <article>
+                        <h3>Custom designs</h3>
+                        <p>Outfits designed around your personal style, occasion and preferences.</p>
+                    </article>
+                    <article>
+                        <h3>Men's fashion</h3>
+                        <p>Elegant senator styles and native wear for every occasion.</p>
+                    </article>
+                    <article>
+                        <h3>Women's fashion</h3>
+                        <p>Gowns, ready-to-wear, native styles, skirt and blouse, and more.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values -->
+        <section class="values section-shell">
+            <div class="section-heading">
+                <p class="eyebrow">Our values</p>
+                <h2>The principles behind the pieces.</h2>
+            </div>
+
+            <div class="values-container">
+                <article>
+                    <h3>Quality</h3>
+                    <p>We pay attention to the details that make every outfit special.</p>
+                </article>
+                <article>
+                    <h3>Creativity</h3>
+                    <p>We combine traditional African fashion with fresh modern ideas.</p>
+                </article>
+                <article>
+                    <h3>Customer satisfaction</h3>
+                    <p>We create outfits that make customers feel confident and comfortable.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact and social links -->
+        <section class="contact-info band" id="contact">
+            <div class="section-shell">
+                <div class="section-heading">
+                    <p class="eyebrow">Stay connected</p>
+                    <h2>Bring your next look to life.</h2>
+                    <p>Browse the catalog or reach us directly for a custom conversation.</p>
+                </div>
+
+                <div class="contact-links">
+                    <a href="https://wa.me/2347043464510?text=Hello%20Great%20Vision%20Fashion%2C%20I%20would%20like%20to%20make%20an%20inquiry." target="_blank" rel="noopener noreferrer">
+                        <span>WhatsApp</span>
+                        <strong>Chat with us &#8599;</strong>
+                    </a>
+                    <a href="https://web.facebook.com/olayemi.bukola.5249?_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer">
+                        <span>Facebook</span>
+                        <strong>Visit our page &#8599;</strong>
+                    </a>
+                    <a href="https://www.instagram.com/bukola7343/" target="_blank" rel="noopener noreferrer">
+                        <span>Instagram</span>
+                        <strong>Follow our work &#8599;</strong>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final call to action -->
+        <section class="cta section-shell">
+            <p class="eyebrow">Your vision, thoughtfully made</p>
+            <h2>Ready for your next outfit?</h2>
+            <p>Let's create something beautiful together.</p>
+            <a href="catalog.html" class="btn">Explore the catalog</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <a class="logo" href="index.html">Great Vision Fashion</a>
+            <p>&copy; 2026 Great Vision Fashion</p>
         </div>
+    </footer>
 
-        <div class="collection-card">
-
-            <div class="coming-soon-image">
-    COMING SOON
-</div>
-
-            <h3>Men's Collection</h3>
-
-            <p>
-                Senator Styles, Agbada,
-                Native Fashion and more.
-            </p>
-
-            <!-- <a href="catlog.html" class="btn">
-                View Collection -->
-</a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="why-us">
-
-    <h2>Why Choose Us?</h2>
-
-    <div class="reasons">
-
-        <div class="reason">
-            <h3>Custom Designs</h3>
-            <p>Tailored outfits made to fit your style.</p>
-        </div>
-
-        <div class="reason">
-            <h3>Quality Craftsmanship</h3>
-            <p>Attention to detail in every outfit.</p>
-        </div>
-
-        <div class="reason">
-            <h3>Modern African Fashion</h3>
-            <p>Culture blended with elegance.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="cta">
-
-    <h2>Ready For Your Next Outfit?</h2>
-
-    <p>Let's create something beautiful together.</p>
-
-    <a href="about.html" class="btn">
-        Contact Us
-    </a>
-
-</section>
-
-<footer>
-    <p>© 2026 Great Vision Fashion</p>
-</footer>
-
-    <script src="js/script.js"></script>
-
+    <script src="JS/script.js"></script>
 </body>
 </html>
