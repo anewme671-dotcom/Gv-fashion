@@ -196,6 +196,7 @@ async function uploadImage(event) {
 }
 
 fileInput.addEventListener('change', () => showPreview(fileInput.files[0]));
+uploadForm.addEventListener('submit', uploadImage);
 removePreview.addEventListener('click', () => {
     selectedImage = null;
     fileInput.value = '';
