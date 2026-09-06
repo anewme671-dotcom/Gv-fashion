@@ -126,7 +126,7 @@ async function toggleVisibility(image) {
         .update({ is_visible: nextVisibility })
         .eq('id', image.id);
     if (error) {
-        displayError(`Could not update visibility (${session.user.email}): ${error.message}`);
+        displayError(`Dashboard v16: Could not update visibility (${session.user.email}): ${error.message}`);
         return;
     }
     image.is_visible = nextVisibility;
