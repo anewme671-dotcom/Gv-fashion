@@ -99,15 +99,33 @@ function renderImages() {
 
         imageElement.src = image.image_url;
         imageElement.alt = image.name;
-        areaLabel.textContent = image.area === 'hero' ? 'Hero slider' : 'Catalog';
+        areaLabel.textContent = `${image.area === 'hero' ? 'Hero slider' : 'Catalog'}${image.is_visible ? '' : ' - Hidden'}`;
         name.textContent = image.name;
         card.querySelector('.move-up').disabled = imageIndex === 0;
         card.querySelector('.move-down').disabled = imageIndex === images.length - 1;
         card.querySelector('.move-up').addEventListener('click', () => moveImage(imageIndex, -1));
         card.querySelector('.move-down').addEventListener('click', () => moveImage(imageIndex, 1));
+        const visibilityButton = card.querySelector('.visibility-button');
+        visibilityButton.textContent = image.is_visible ? 'Hide' : 'Show';
+        visibilityButton.setAttribute('aria-label', `${image.is_visible ? 'Hide' : 'Show'} ${image.name}`);
+        visibilityButton.addEventListener('click', () => toggleVisibility(image));
         card.querySelector('.delete-button').addEventListener('click', () => deleteImage(image));
         imageLibrary.appendChild(article);
     });
+}
+
+async function toggleVisibility(image) {
+    const nextVisibility = !image.is_visible;
+    const { error } = await supabaseClient
+        .from('content_images')
+        .update({ is_visible: nextVisibility })
+        .eq('id', image.id);
+    if (error) {
+        displayError(`Could not update visibility: ${error.message}`);
+        return;
+    }
+    image.is_visible = nextVisibility;
+    renderImages();
 }
 
 async function moveImage(index, direction) {

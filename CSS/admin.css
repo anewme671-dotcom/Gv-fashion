@@ -89,6 +89,7 @@ input::placeholder { color: var(--muted); opacity: .75; }
 .card-name { font-family: 'DM Sans', sans-serif; font-size: .84rem; font-weight: 700; }
 .card-actions { align-items: end; display: flex; gap: 4px; }
 .icon-button, .delete-button { background: transparent; border: 1px solid var(--line); font-size: .7rem; height: 28px; min-width: 28px; }
+.visibility-button { color: var(--plum); padding: 0 7px; }
 .delete-button { color: #a14d62; padding: 0 7px; }
 .empty-state { color: var(--muted); padding: 55px 20px; text-align: center; }
 .empty-mark { font-size: 1.3rem; }
