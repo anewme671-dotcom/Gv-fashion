@@ -41,6 +41,8 @@ async function loadCatalogImages() {
 
     if (data.some((image) => image.category === 'baggies')) {
         document.querySelector('[data-baggies-coming-soon]')?.remove();
+        const baggiesDescription = document.querySelector('[data-baggies-description]');
+        if (baggiesDescription) baggiesDescription.textContent = 'Relaxed Baggie styles for a confident, easy fit.';
     }
 }
 
