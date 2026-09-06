@@ -116,12 +116,17 @@ function renderImages() {
 
 async function toggleVisibility(image) {
     const nextVisibility = !image.is_visible;
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (!session) {
+        displayError('Your dashboard session has expired. Sign out and sign in again before changing visibility.');
+        return;
+    }
     const { error } = await supabaseClient
         .from('content_images')
         .update({ is_visible: nextVisibility })
         .eq('id', image.id);
     if (error) {
-        displayError(`Could not update visibility: ${error.message}`);
+        displayError(`Could not update visibility (${session.user.email}): ${error.message}`);
         return;
     }
     image.is_visible = nextVisibility;
