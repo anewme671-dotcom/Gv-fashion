@@ -9,9 +9,9 @@ Great Vision Fashion is a static two-page boutique fashion site.
 - `admin.html` - protected content dashboard for uploading and organizing website images.
 - `CSS/style.css` - shared responsive editorial styling.
 - `CSS/admin.css` - dashboard styling and responsive admin layout.
-- `JS/script.js` - accessible hero slider with reduced-motion support.
 - `JS/admin.js` - Supabase authentication, image upload and library management.
 - `JS/catalog.js` - loads categorized online catalog images into the public catalog.
+- `JS/script.js` - hero slider, theme toggle, and online hero image loading.
 - `JS/supabase-config.js` - public Supabase project configuration.
 - `IMAGES/` - local hero and collection assets.
 

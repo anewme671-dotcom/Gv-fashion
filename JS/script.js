@@ -1,9 +1,9 @@
-const slides = Array.from(document.querySelectorAll('.hero-image'));
 const previousButton = document.querySelector('[data-slider="previous"]');
 const nextButton = document.querySelector('[data-slider="next"]');
 const status = document.querySelector('.slider-status');
 const themeToggle = document.querySelector('.theme-toggle');
 const root = document.documentElement;
+let slides = [];
 let currentSlide = 0;
 let timer;
 
@@ -57,8 +57,37 @@ function resetSlider() {
     startSlider();
 }
 
-if (slides.length) {
+async function loadOnlineHeroImages() {
+    if (!window.supabase || !window.SUPABASE_URL || !window.SUPABASE_PUBLISHABLE_KEY) return;
+
+    const client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_PUBLISHABLE_KEY);
+    const { data, error } = await client
+        .from('content_images')
+        .select('name, image_url')
+        .eq('area', 'hero')
+        .eq('is_visible', true)
+        .order('display_order', { ascending: true });
+
+    if (error || !data?.length) return;
+
+    const slider = document.querySelector('.hero-slider');
+    if (!slider) return;
+    slider.replaceChildren(...data.map((image, index) => {
+        const slide = document.createElement('img');
+        slide.className = `hero-image${index === 0 ? ' active' : ''}`;
+        slide.src = image.image_url;
+        slide.alt = image.name;
+        return slide;
+    }));
+}
+
+async function initializeSlider() {
+    await loadOnlineHeroImages();
+    slides = Array.from(document.querySelectorAll('.hero-image'));
+    if (!slides.length) return;
     previousButton?.addEventListener('click', () => { showSlide(currentSlide - 1); resetSlider(); });
     nextButton?.addEventListener('click', () => { showSlide(currentSlide + 1); resetSlider(); });
     startSlider();
 }
+
+initializeSlider();
