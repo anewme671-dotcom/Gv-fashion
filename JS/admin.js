@@ -179,11 +179,15 @@ loginForm.addEventListener('submit', async (event) => {
     const button = loginForm.querySelector('button');
     button.disabled = true;
     loginMessage.textContent = 'Signing in...';
+    const timeout = new Promise((_, reject) => {
+        window.setTimeout(() => reject(new Error('The login request timed out. Check your internet connection and Supabase project URL.')), 15000);
+    });
     try {
-        const { error } = await supabase.auth.signInWithPassword({
+        const signIn = supabase.auth.signInWithPassword({
             email: document.querySelector('#login-email').value,
             password: document.querySelector('#login-password').value
         });
+        const { error } = await Promise.race([signIn, timeout]);
         if (error) {
             loginMessage.textContent = error.message;
             return;
