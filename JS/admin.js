@@ -31,8 +31,15 @@ const filterSelect = document.querySelector('#filter-area');
 const areaSelect = document.querySelector('#image-area');
 const categorySelect = document.querySelector('#image-category');
 const formMessage = document.querySelector('#form-message');
+const themeToggle = document.querySelector('[data-theme-toggle]');
 let images = [];
 let selectedImage = null;
+
+function updateThemeToggle(theme) {
+    const isDark = theme === 'dark';
+    themeToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+}
 
 function showLogin(message = '') {
     loginScreen.classList.remove('is-hidden');
@@ -234,12 +241,15 @@ areaSelect.addEventListener('change', () => {
     if (!isCatalog) categorySelect.value = '';
 });
 categorySelect.required = areaSelect.value === 'catalog';
-document.querySelector('[data-theme-toggle]').addEventListener('click', () => {
+themeToggle.addEventListener('click', () => {
     const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', nextTheme);
     localStorage.setItem('theme', nextTheme);
+    updateThemeToggle(nextTheme);
 });
-root.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+const initialTheme = localStorage.getItem('theme') || 'light';
+root.setAttribute('data-theme', initialTheme);
+updateThemeToggle(initialTheme);
 supabaseClient.auth.getSession().then(async ({ data: { session } }) => {
     if (!session) {
         showLogin();
