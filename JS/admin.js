@@ -10,7 +10,7 @@ if (!window.supabase || typeof window.supabase.createClient !== 'function') {
     loginMessage.textContent = 'The Supabase library could not load. Check the internet connection and refresh this page.';
     throw new Error('Supabase client library did not load.');
 }
-const supabase = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_PUBLISHABLE_KEY);
+const supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_PUBLISHABLE_KEY);
 const uploadForm = document.querySelector('#upload-form');
 const fileInput = document.querySelector('#image-file');
 const filePreview = document.querySelector('#file-preview');
@@ -41,7 +41,7 @@ function displayError(message) {
 }
 
 async function loadImages() {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
         .from('content_images')
         .select('*')
         .order('display_order', { ascending: true })
@@ -93,7 +93,7 @@ async function moveImage(index, direction) {
     if (nextIndex < 0 || nextIndex >= images.length) return;
     [images[index], images[nextIndex]] = [images[nextIndex], images[index]];
     const updates = images.map((image, order) => ({ id: image.id, display_order: order }));
-    const { error } = await supabase.from('content_images').upsert(updates);
+    const { error } = await supabaseClient.from('content_images').upsert(updates);
     if (error) {
         displayError(`Could not reorder images: ${error.message}`);
         return;
@@ -103,7 +103,7 @@ async function moveImage(index, direction) {
 
 async function deleteImage(image) {
     if (!window.confirm(`Remove “${image.name}” from the online library?`)) return;
-    const { error } = await supabase.from('content_images').delete().eq('id', image.id);
+    const { error } = await supabaseClient.from('content_images').delete().eq('id', image.id);
     if (error) {
         displayError(`Could not delete image: ${error.message}`);
         return;
@@ -139,15 +139,15 @@ async function uploadImage(event) {
     submitButton.disabled = true;
     formMessage.textContent = 'Uploading image...';
 
-    const { error: uploadError } = await supabase.storage.from('site-images').upload(filePath, selectedImage, { upsert: false });
+    const { error: uploadError } = await supabaseClient.storage.from('site-images').upload(filePath, selectedImage, { upsert: false });
     if (uploadError) {
         submitButton.disabled = false;
         displayError(`Upload failed: ${uploadError.message}`);
         return;
     }
 
-    const { data: publicFile } = supabase.storage.from('site-images').getPublicUrl(filePath);
-    const { error: insertError } = await supabase.from('content_images').insert({
+    const { data: publicFile } = supabaseClient.storage.from('site-images').getPublicUrl(filePath);
+    const { error: insertError } = await supabaseClient.from('content_images').insert({
         name,
         area,
         image_url: publicFile.publicUrl,
@@ -183,7 +183,7 @@ loginForm.addEventListener('submit', async (event) => {
         window.setTimeout(() => reject(new Error('The login request timed out. Check your internet connection and Supabase project URL.')), 15000);
     });
     try {
-        const signIn = supabase.auth.signInWithPassword({
+        const signIn = supabaseClient.auth.signInWithPassword({
             email: document.querySelector('#login-email').value,
             password: document.querySelector('#login-password').value
         });
@@ -201,7 +201,7 @@ loginForm.addEventListener('submit', async (event) => {
     }
 });
 document.querySelector('#logout-button').addEventListener('click', async () => {
-    await supabase.auth.signOut();
+    await supabaseClient.auth.signOut();
     showLogin();
 });
 searchInput.addEventListener('input', renderImages);
@@ -212,7 +212,7 @@ document.querySelector('[data-theme-toggle]').addEventListener('click', () => {
     localStorage.setItem('theme', nextTheme);
 });
 root.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
-supabase.auth.getSession().then(async ({ data: { session } }) => {
+supabaseClient.auth.getSession().then(async ({ data: { session } }) => {
     if (!session) {
         showLogin();
         return;
