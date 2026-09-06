@@ -121,12 +121,12 @@ async function toggleVisibility(image) {
         displayError('Your dashboard session has expired. Sign out and sign in again before changing visibility.');
         return;
     }
-    const { error } = await supabaseClient
-        .from('content_images')
-        .update({ is_visible: nextVisibility })
-        .eq('id', image.id);
+    const { error } = await supabaseClient.rpc('set_content_image_visibility', {
+        image_id: image.id,
+        visible: nextVisibility
+    });
     if (error) {
-        displayError(`Dashboard v16: Could not update visibility (${session.user.email}): ${error.message}`);
+        displayError(`Could not update visibility (${session.user.email}): ${error.message}`);
         return;
     }
     image.is_visible = nextVisibility;
