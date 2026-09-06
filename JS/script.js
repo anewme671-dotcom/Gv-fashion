@@ -72,19 +72,21 @@ async function loadOnlineHeroImages() {
 
     const slider = document.querySelector('.hero-slider');
     if (!slider) return;
-    slider.replaceChildren(...data.map((image, index) => {
+    const onlineSlides = data.map((image) => {
         const slide = document.createElement('img');
-        slide.className = `hero-image${index === 0 ? ' active' : ''}`;
+        slide.className = 'hero-image';
         slide.src = image.image_url;
         slide.alt = image.name;
         return slide;
-    }));
+    });
+    slider.append(...onlineSlides);
 }
 
 async function initializeSlider() {
     await loadOnlineHeroImages();
     slides = Array.from(document.querySelectorAll('.hero-image'));
     if (!slides.length) return;
+    showSlide(0);
     previousButton?.addEventListener('click', () => { showSlide(currentSlide - 1); resetSlider(); });
     nextButton?.addEventListener('click', () => { showSlide(currentSlide + 1); resetSlider(); });
     startSlider();
