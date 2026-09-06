@@ -38,6 +38,10 @@ async function loadCatalogImages() {
         const grid = document.querySelector(`[data-category="${CSS.escape(image.category)}"]`);
         if (grid) grid.appendChild(createCatalogItem(image));
     });
+
+    if (data.some((image) => image.category === 'baggies')) {
+        document.querySelector('[data-baggies-coming-soon]')?.remove();
+    }
 }
 
 loadCatalogImages();

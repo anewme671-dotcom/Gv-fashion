@@ -72,6 +72,7 @@ input::placeholder { color: var(--muted); opacity: .75; }
 .primary-button:disabled { cursor: wait; opacity: .7; }
 .primary-button span { float: right; font-size: 1.2rem; }
 .form-message { color: var(--green); font-size: .78rem; min-height: 18px; }
+.form-message:not(:empty) { background: var(--surface-strong); border-left: 3px solid var(--green); padding: 9px 10px; }
 .library-heading { align-items: end; }
 .library-tools { align-items: center; display: flex; gap: 8px; }
 .library-tools select { min-height: 38px; padding: 7px 10px; }
