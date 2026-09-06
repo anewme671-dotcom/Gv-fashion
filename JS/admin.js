@@ -132,10 +132,14 @@ async function moveImage(index, direction) {
     const nextIndex = index + direction;
     if (nextIndex < 0 || nextIndex >= images.length) return;
     [images[index], images[nextIndex]] = [images[nextIndex], images[index]];
-    const updates = images.map((image, order) => ({ id: image.id, display_order: order }));
-    const { error } = await supabaseClient.from('content_images').upsert(updates);
-    if (error) {
-        displayError(`Could not reorder images: ${error.message}`);
+    const results = await Promise.all(images.map((image, order) => supabaseClient
+        .from('content_images')
+        .update({ display_order: order })
+        .eq('id', image.id)));
+    const failedUpdate = results.find((result) => result.error);
+    if (failedUpdate) {
+        displayError(`Could not reorder images: ${failedUpdate.error.message}`);
+        await loadImages();
         return;
     }
     renderImages();
