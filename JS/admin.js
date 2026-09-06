@@ -3,6 +3,9 @@ const loginScreen = document.querySelector('#login-screen');
 const dashboardApp = document.querySelector('#dashboard-app');
 const loginForm = document.querySelector('#login-form');
 const loginMessage = document.querySelector('#login-message');
+if (!loginForm || !loginMessage) {
+    throw new Error('Dashboard login markup is missing.');
+}
 if (!window.supabase || typeof window.supabase.createClient !== 'function') {
     loginMessage.textContent = 'The Supabase library could not load. Check the internet connection and refresh this page.';
     throw new Error('Supabase client library did not load.');
@@ -176,17 +179,22 @@ loginForm.addEventListener('submit', async (event) => {
     const button = loginForm.querySelector('button');
     button.disabled = true;
     loginMessage.textContent = 'Signing in...';
-    const { error } = await supabase.auth.signInWithPassword({
-        email: document.querySelector('#login-email').value,
-        password: document.querySelector('#login-password').value
-    });
-    button.disabled = false;
-    if (error) {
-        loginMessage.textContent = error.message;
-        return;
+    try {
+        const { error } = await supabase.auth.signInWithPassword({
+            email: document.querySelector('#login-email').value,
+            password: document.querySelector('#login-password').value
+        });
+        if (error) {
+            loginMessage.textContent = error.message;
+            return;
+        }
+        showDashboard();
+        await loadImages();
+    } catch (error) {
+        loginMessage.textContent = `Login failed: ${error.message}`;
+    } finally {
+        button.disabled = false;
     }
-    showDashboard();
-    await loadImages();
 });
 document.querySelector('#logout-button').addEventListener('click', async () => {
     await supabase.auth.signOut();
