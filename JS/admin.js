@@ -33,12 +33,16 @@ let images = [];
 let selectedImage = null;
 
 function showLogin(message = '') {
+    loginScreen.classList.remove('is-hidden');
+    dashboardApp.classList.add('is-hidden');
     loginScreen.removeAttribute('hidden');
     dashboardApp.setAttribute('hidden', '');
     loginMessage.textContent = message;
 }
 
 function showDashboard() {
+    loginScreen.classList.add('is-hidden');
+    dashboardApp.classList.remove('is-hidden');
     loginScreen.setAttribute('hidden', '');
     dashboardApp.removeAttribute('hidden');
 }
