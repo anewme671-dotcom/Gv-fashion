@@ -28,6 +28,8 @@ const imageCount = document.querySelector('#image-count');
 const emptyState = document.querySelector('#empty-state');
 const searchInput = document.querySelector('#search-images');
 const filterSelect = document.querySelector('#filter-area');
+const areaSelect = document.querySelector('#image-area');
+const categorySelect = document.querySelector('#image-category');
 const formMessage = document.querySelector('#form-message');
 let images = [];
 let selectedImage = null;
@@ -147,7 +149,12 @@ async function uploadImage(event) {
 
     const submitButton = uploadForm.querySelector('button[type="submit"]');
     const name = document.querySelector('#image-name').value.trim();
-    const area = document.querySelector('#image-area').value;
+    const area = areaSelect.value;
+    const category = categorySelect.value || null;
+    if (area === 'catalog' && !category) {
+        displayError('Choose a catalog category before adding this image.');
+        return;
+    }
     const filePath = `${area}/${crypto.randomUUID()}-${selectedImage.name.replace(/[^a-zA-Z0-9._-]/g, '-')}`;
     submitButton.disabled = true;
     formMessage.textContent = 'Uploading image...';
@@ -163,6 +170,7 @@ async function uploadImage(event) {
     const { error: insertError } = await supabaseClient.from('content_images').insert({
         name,
         area,
+        category,
         image_url: publicFile.publicUrl,
         display_order: images.length
     });
@@ -220,6 +228,12 @@ document.querySelector('#logout-button').addEventListener('click', async () => {
 });
 searchInput.addEventListener('input', renderImages);
 filterSelect.addEventListener('change', renderImages);
+areaSelect.addEventListener('change', () => {
+    const isCatalog = areaSelect.value === 'catalog';
+    categorySelect.required = isCatalog;
+    if (!isCatalog) categorySelect.value = '';
+});
+categorySelect.required = areaSelect.value === 'catalog';
 document.querySelector('[data-theme-toggle]').addEventListener('click', () => {
     const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', nextTheme);
