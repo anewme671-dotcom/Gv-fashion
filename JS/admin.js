@@ -10,7 +10,14 @@ if (!window.supabase || typeof window.supabase.createClient !== 'function') {
     loginMessage.textContent = 'The Supabase library could not load. Check the internet connection and refresh this page.';
     throw new Error('Supabase client library did not load.');
 }
-const supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_PUBLISHABLE_KEY);
+const supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_PUBLISHABLE_KEY, {
+    auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: false,
+        lock: async (_name, _acquireTimeout, callback) => callback()
+    }
+});
 const uploadForm = document.querySelector('#upload-form');
 const fileInput = document.querySelector('#image-file');
 const filePreview = document.querySelector('#file-preview');
@@ -192,6 +199,7 @@ loginForm.addEventListener('submit', async (event) => {
             loginMessage.textContent = error.message;
             return;
         }
+        loginMessage.textContent = 'Signed in. Loading your dashboard...';
         showDashboard();
         await loadImages();
     } catch (error) {
