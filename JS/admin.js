@@ -33,14 +33,14 @@ let images = [];
 let selectedImage = null;
 
 function showLogin(message = '') {
-    loginScreen.hidden = false;
-    dashboardApp.hidden = true;
+    loginScreen.removeAttribute('hidden');
+    dashboardApp.setAttribute('hidden', '');
     loginMessage.textContent = message;
 }
 
 function showDashboard() {
-    loginScreen.hidden = true;
-    dashboardApp.hidden = false;
+    loginScreen.setAttribute('hidden', '');
+    dashboardApp.removeAttribute('hidden');
 }
 
 function displayError(message) {
@@ -54,7 +54,9 @@ async function loadImages() {
         .order('display_order', { ascending: true })
         .order('created_at', { ascending: true });
     if (error) {
-        displayError(`Could not load images: ${error.message}`);
+        const message = `Signed in, but the image library could not load: ${error.message}`;
+        formMessage.textContent = message;
+        loginMessage.textContent = message;
         return;
     }
     images = data || [];
