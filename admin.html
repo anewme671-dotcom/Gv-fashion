@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Great Vision Fashion local content dashboard.">
+    <title>Content Dashboard | Great Vision Fashion</title>
+    <link rel="stylesheet" href="CSS/admin.css">
+</head>
+<body>
+    <section class="login-screen" id="login-screen">
+        <div class="login-card">
+            <p class="eyebrow">Great Vision Fashion</p>
+            <h1>Content dashboard</h1>
+            <p>Sign in to manage the images on your website.</p>
+            <form id="login-form">
+                <label>
+                    Email address
+                    <input id="login-email" type="email" autocomplete="email" required>
+                </label>
+                <label>
+                    Password
+                    <input id="login-password" type="password" autocomplete="current-password" required>
+                </label>
+                <button class="primary-button" type="submit">Sign in <span>&rarr;</span></button>
+                <p class="form-message" id="login-message" role="alert"></p>
+            </form>
+        </div>
+    </section>
+    <div id="dashboard-app" hidden>
+    <header class="admin-header">
+        <a class="brand" href="index.html">
+            <img src="IMAGES/transparnt%20gv%20logo.png" alt="Great Vision Fashion">
+        </a>
+        <div class="header-actions">
+            <a class="view-site" href="index.html">View website</a>
+            <button class="theme-button" type="button" data-theme-toggle aria-label="Toggle dark mode">Dark mode</button>
+            <button class="theme-button" type="button" id="logout-button">Sign out</button>
+        </div>
+    </header>
+
+    <main class="dashboard-shell">
+        <section class="dashboard-intro">
+            <div>
+                <p class="eyebrow">Local content studio</p>
+                <h1>Keep the collection fresh.</h1>
+                <p class="intro-copy">Upload new images, arrange your edits and decide what should appear on the site.</p>
+            </div>
+            <div class="storage-note">
+                <span class="status-dot"></span>
+                Saved in this browser
+            </div>
+        </section>
+
+        <section class="dashboard-grid" aria-label="Content management tools">
+            <aside class="upload-panel panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">Add a new image</p>
+                        <h2>Upload content</h2>
+                    </div>
+                    <span class="step-number">01</span>
+                </div>
+                <form id="upload-form">
+                    <label class="upload-dropzone" for="image-file">
+                        <span class="upload-icon">+</span>
+                        <strong>Choose an image</strong>
+                        <span>JPG, PNG or WebP up to 5 MB</span>
+                        <input id="image-file" name="image" type="file" accept="image/jpeg,image/png,image/webp" required>
+                    </label>
+                    <div class="file-preview" id="file-preview" hidden>
+                        <img id="preview-image" alt="Selected image preview">
+                        <button type="button" class="remove-preview" id="remove-preview" aria-label="Remove selected image">&times;</button>
+                    </div>
+                    <label>
+                        Image name
+                        <input id="image-name" name="name" type="text" placeholder="e.g. Heritage Classic Gown" required>
+                    </label>
+                    <label>
+                        Display area
+                        <select id="image-area" name="area">
+                            <option value="catalog">Catalog</option>
+                            <option value="hero">Hero slider</option>
+                        </select>
+                    </label>
+                    <button class="primary-button" type="submit">Add to dashboard <span>&rarr;</span></button>
+                    <p class="form-message" id="form-message" role="status"></p>
+                </form>
+            </aside>
+
+            <section class="library-panel panel">
+                <div class="panel-heading library-heading">
+                    <div>
+                        <p class="eyebrow">Your visual library</p>
+                        <h2>Manage images</h2>
+                    </div>
+                    <div class="library-tools">
+                        <label class="search-box" aria-label="Search images">
+                            <span>&#9906;</span>
+                            <input id="search-images" type="search" placeholder="Search">
+                        </label>
+                        <select id="filter-area" aria-label="Filter images">
+                            <option value="all">All images</option>
+                            <option value="hero">Hero slider</option>
+                            <option value="catalog">Catalog</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="library-summary">
+                    <span id="image-count">0 images</span>
+                    <button class="text-button" type="button" id="reset-library">Restore starter images</button>
+                </div>
+                <div class="image-library" id="image-library"></div>
+                <div class="empty-state" id="empty-state" hidden>
+                    <span class="empty-mark">+</span>
+                    <h3>No images here yet</h3>
+                    <p>Upload an image to start building this collection.</p>
+                </div>
+            </section>
+        </section>
+
+        <section class="next-step">
+            <span class="next-step-number">02</span>
+            <div>
+                <p class="eyebrow">Next connection</p>
+                <h2>Ready for online storage when you are.</h2>
+                <p>This local dashboard is the first step. Later, we will connect these controls to a secure online account so changes appear on the live website.</p>
+            </div>
+        </section>
+    </main>
+    </div>
+
+    <template id="image-card-template">
+        <article class="image-card">
+            <div class="image-frame"><img class="card-image" alt=""></div>
+            <div class="card-details">
+                <div>
+                    <span class="area-label"></span>
+                    <h3 class="card-name"></h3>
+                </div>
+                <div class="card-actions">
+                    <button class="icon-button move-up" type="button" title="Move up" aria-label="Move image up">&#8593;</button>
+                    <button class="icon-button move-down" type="button" title="Move down" aria-label="Move image down">&#8595;</button>
+                    <button class="delete-button" type="button">Delete</button>
+                </div>
+            </div>
+        </article>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="JS/supabase-config.js"></script>
+    <script src="JS/admin.js"></script>
+</body>
+</html>

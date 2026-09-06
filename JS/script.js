@@ -2,8 +2,31 @@ const slides = Array.from(document.querySelectorAll('.hero-image'));
 const previousButton = document.querySelector('[data-slider="previous"]');
 const nextButton = document.querySelector('[data-slider="next"]');
 const status = document.querySelector('.slider-status');
+const themeToggle = document.querySelector('.theme-toggle');
+const root = document.documentElement;
 let currentSlide = 0;
 let timer;
+
+function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    if (themeToggle) {
+        const isDark = theme === 'dark';
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+        themeToggle.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    }
+    localStorage.setItem('theme', theme);
+}
+
+const savedTheme = localStorage.getItem('theme');
+const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+applyTheme(savedTheme || preferredTheme);
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(nextTheme);
+    });
+}
 
 // Smoothly move to sections linked with #story or #contact.
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
